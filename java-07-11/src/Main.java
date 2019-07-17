@@ -1,17 +1,17 @@
 public class Main {
 
     public static void main(String[] args) {
-        int a = 10;
-        int b = 3;
+        int a = Integer.parseInt(args[0]);
+        int b = Integer.parseInt(args[1]);
         double res = a / b;
         System.out.println(res);                                    //két egész számnál az eredmény egész
-        System.out.println(divide(a,b));                            //double-ként kezeli az egész számot, amit kapott paraméterben
-        System.out.println(strToInt("12"));
+//        System.out.println(divide(a,b));                            //double-ként kezeli az egész számot, amit kapott paraméterben
+//        System.out.println(strToInt("12"));
        // System.out.println(strToInt("kiscica"));                //exception - futás idejű hiba
 
-        for (int i = 0; i < args.length; i++) {
+       /* for (int i = 0; i < args.length; i++) {
             System.out.println(args[i]);
-        }
+        }*/
     }
 
     public static double divide(int a, int b){
