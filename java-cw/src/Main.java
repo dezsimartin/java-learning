@@ -8,6 +8,7 @@ public class Main {
         //System.out.println(findIt(new int[]{1,1,1,1,1,1,10,1,1,1,1}));
        // System.out.println(solution(10));
         //snail(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+        System.out.println(SongDecoder("RWUBWUBWUBLWUB"));
     }
 
 
@@ -77,9 +78,20 @@ public class Main {
 
 
 
-        public static String SongDecoder (String song)
-        {
-            
+    public static String SongDecoder (String song) {
+            String songname = "";
+            for (int i = 2; i < song.length(); i++) {
+                if(song.charAt(0) != 'W'){
+                    songname += song.charAt(0);
+                }
+                if(song.charAt(i) == 'B' && song.charAt(i-1) == 'U' && song.charAt(i-2) == 'W') {
+                    break;
+                } else {
+
+                }
+            }
+
+            return songname;
         }
 
 }
