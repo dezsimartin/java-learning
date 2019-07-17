@@ -7,7 +7,7 @@ public class Main {
        // System.out.println(scramble("sammoc", "commas"));
         //System.out.println(findIt(new int[]{1,1,1,1,1,1,10,1,1,1,1}));
        // System.out.println(solution(10));
-        snail(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+        //snail(new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
     }
 
 
@@ -75,24 +75,11 @@ public class Main {
         return sum;
     }
 
-    public static void snail(int[][] array) {
-        int[] order = new int[array.length * array.length];
-        int n = 0;
-        for (int i = 0; i < 1; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                order[n] = array[i][j];
-                n++;
-            }
-        }
-        for (int i = 1; i < array.length; i++) {
-            for (int j = array.length; j < array[i].length; j++) {
-                order[n] = array[i][j];
-                n++;
-            }
-        }
-        for (int i = 0; i < order.length; i++) {
-            System.out.println(order[i]);
+
+
+        public static String SongDecoder (String song)
+        {
+            
         }
 
-    }
 }
