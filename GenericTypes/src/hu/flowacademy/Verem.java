@@ -34,6 +34,11 @@ public class Verem<E> {
         sb.append(']');
         return sb.toString();
     }
+
+    public E peek() throws UnderflowExc{
+        if(this.pointer == 0) throw new UnderflowExc("Underflow");
+        return list[pointer - 1];
+    }
 }
 
 class ZacskoException extends Exception{
