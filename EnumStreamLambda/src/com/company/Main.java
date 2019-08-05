@@ -48,18 +48,25 @@ public class Main {
         nameList.stream().map(s -> s.length()).sorted(Comparator.reverseOrder()).limit(1).forEach(System.out::println);
         nameList.stream().filter(s -> s.charAt(0) == 'F' || s.charAt(0) == 'f').forEach(item -> {System.out.println(item + " ");});   //lambda expression item -> {System.out.println(item + " ");}
 
-        newCSV("kiscica.csv");
+        System.out.println(newCSV("kiscica.csv"));
 
     }
 
-    public static void newCSV(String path){
+    public static List<Kiscica> newCSV(String path){
+        List<Kiscica> list;
         try{
-            Files.lines(Paths.get(path)).forEach(item -> {
+           /* Files.lines(Paths.get(path)).forEach(item -> {
                 System.out.println(item);
-            });
+            });*/
+          list =  Files.lines(Paths.get(path)).map(s -> {
+                String[] arr = s.split(";");
+                return new Kiscica(arr[0], Integer.parseInt(arr[1]));
+            }).collect(Collectors.toList());
+          return list;
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public static void readOldCSV(String path){

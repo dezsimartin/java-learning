@@ -26,6 +26,14 @@ public class Kiscica {
         return Objects.hash(getName(), getAge());
     }
 
+    @Override
+    public String toString() {
+        return "Kiscica{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
