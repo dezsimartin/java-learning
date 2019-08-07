@@ -40,8 +40,6 @@ public class Darts {
                 scoreActual = scoreActual - num;
             } else if (!isFirst) {
                 scoreActual = scoreActual - (num * m.mult);
-            } else {
-                System.out.println("Érvénytelen.");
             }
 
     }
