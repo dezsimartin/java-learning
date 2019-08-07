@@ -1,54 +1,56 @@
 package hu.flowacademy;
 
 
-public class ParkingLot<E> {
-    private int index;
-    public E[] list;
+import hu.flowacademy.Vehicle.Car;
+import hu.flowacademy.Vehicle.Motorcycle;
+import hu.flowacademy.Vehicle.Vehicle;
 
-    public ParkingLot(){
-        this.index = 0;
-        this.list = (E[])new Object[100];
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+
+public class ParkingLot<E extends Vehicle> {
+    private final List<E> places;
+    private int maxPlaces;
+
+    public ParkingLot(int maxPlaces){
+        this.maxPlaces = maxPlaces;
+        this.places = new ArrayList<>();
     }
 
-    public void addVehicle(E value) throws OverflowException{
-        if(index > 100) {throw new OverflowException("Szop");}
-        this.list[index] = value;
-        index++;
-    }
-
-    public int getAllVehicles(){
-        return index;
-    }
-
-    public int getCars(){
-        int counter = 0;
-        for (int i = 0; i < index; i++) {
-            if(list[i].getClass().toString().equals("class hu.flowacademy.Vehicle.Car")) {
-                counter++;
-            }
+    public boolean add(E e){
+        if(places.size() == maxPlaces){
+            return false;
         }
-        return counter;
+        return places.add(e);
+    }
+
+    public List<E> getPlaces() {
+        return places;
+    }
+
+    public int getMaxPlaces() {
+        return maxPlaces;
+    }
+
+    public void setMaxPlaces(int maxPlaces) {
+        this.maxPlaces = maxPlaces;
+    }
+
+    public E remove(String id){
+    Predicate<E> idEquals = v -> v.getID().equals(id);
+    E e = places.stream().filter(idEquals).findFirst().orElseThrow(RuntimeException::new);
+    places.removeIf(idEquals);
+    return e;
+    }
+
+    public int getCarCount(){
+        return (int) places.stream().filter(o -> o instanceof Car).count();
+    }
+
+    public int getMotorCount(){
+        return (int) places.stream().filter(o -> o instanceof Motorcycle).count();
     }
 
 
-    public int getMotorcycles(){
-        int counter = 0;
-        for (int i = 0; i < index; i++) {
-            if(list[i].getClass().toString().equals("class hu.flowacademy.Vehicle.Motorcycle")) {
-                counter++;
-            }
-        }
-        return counter;
-
-    }
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("Vehicles: [");
-        for (int i = 0; i < index ; i++) {
-            sb.append(list[i]);
-            sb.append(' ');
-        }
-        sb.append(']');
-        return sb.toString();
-    }
 }

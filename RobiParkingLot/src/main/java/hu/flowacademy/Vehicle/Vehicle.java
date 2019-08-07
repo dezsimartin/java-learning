@@ -1,6 +1,6 @@
 package hu.flowacademy.Vehicle;
 
-public class Vehicle {
+public abstract class Vehicle {
 
     protected String type;
     protected String manufacturer;
@@ -9,6 +9,8 @@ public class Vehicle {
         this.type = type;
         this.manufacturer = manufacturer;
     }
+
+    public abstract String getID();
 
     public String getType() {
         return type;
