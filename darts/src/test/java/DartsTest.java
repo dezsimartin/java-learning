@@ -19,20 +19,20 @@ public class DartsTest {
     }
 
     @Test
-    public void shouldCorrectlyCalculateNormalThrow() throws Exception{
+    public void shouldCorrectlyCalculateNormalThrow(){
         d.dart(20, Darts.Multiplier.DOUBLE);
         d.dart(20);
         Assertions.assertEquals(241, d.getScore());
     }
 
     @Test
-    public void shouldCorrectlyCalculateDoubleThrow() throws Exception {
+    public void shouldCorrectlyCalculateDoubleThrow()  {
         d.dart(20, Darts.Multiplier.DOUBLE);
         Assertions.assertEquals(261, d.getScore());
     }
 
     @Test
-    public void shouldCorrectlyCalculateTripleThrow() throws Exception {
+    public void shouldCorrectlyCalculateTripleThrow()  {
         d.dart(10, Darts.Multiplier.DOUBLE);
         d.dart(20, Darts.Multiplier.TRIPLE);
         Assertions.assertEquals(221, d.getScore());
@@ -45,7 +45,7 @@ public class DartsTest {
     }
 
     @Test
-    public void shouldCalculateTheTurn() throws Exception{
+    public void shouldCalculateTheTurn() {
         d.dart(10, Darts.Multiplier.DOUBLE);
         d.dart(20, Darts.Multiplier.TRIPLE);
         d.dart(20);
@@ -53,15 +53,22 @@ public class DartsTest {
     }
 
     @Test
-    public void shouldStartWithDouble() throws Exception{
+    public void shouldStartWithDouble() {
         d.dart(20, Darts.Multiplier.DOUBLE);
         Assertions.assertEquals(261, d.getScore());
     }
 
 
     @Test
-    public void shouldFinishWithDouble(){
-
+    public void shouldFinishWithDouble() {
+        d.dart(10, Darts.Multiplier.DOUBLE);
+        d.dart(20, Darts.Multiplier.TRIPLE);
+        d.dart(20, Darts.Multiplier.TRIPLE);
+        d.dart(20, Darts.Multiplier.TRIPLE);
+        d.dart(20, Darts.Multiplier.TRIPLE);
+        d.dart(1);
+        d.dart(20, Darts.Multiplier.DOUBLE);
+        Assertions.assertTrue(d.isFinished());
     }
 
 /*    shouldCalculateTheTurn();

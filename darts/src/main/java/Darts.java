@@ -19,7 +19,7 @@ public class Darts {
     }
 
 
-    public void dart(int num) throws Exception {
+    public void dart(int num)  {
         if (!isFirst) {
             scoreActual = scoreActual - num;
             if (this.dartNumber > 1) {
@@ -31,23 +31,22 @@ public class Darts {
         }
     }
 
-    public void dart (int num, Multiplier m) throws Exception{
-        try {
+    public void dart (int num, Multiplier m){
             if(this.dartNumber > 1) {this.dartNumber--; } else {this.dartNumber = 3; this.rounds++;}
             if (m.getMult() == 2 && isFirst) {
                 scoreActual = scoreActual - (num * m.mult);
                 isFirst = false;
+            } else if(scoreActual - num == 0 && m.getMult() == 2){
+                scoreActual = scoreActual - num;
             } else if (!isFirst) {
                 scoreActual = scoreActual - (num * m.mult);
+            } else {
+                System.out.println("Érvénytelen.");
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
     }
 
-    public int getScore(){
-       return isFirst ? startScore : scoreActual;
-    }
+    public int getScore(){ return isFirst ? startScore : scoreActual; }
 
     public boolean isFinished(){
         return scoreActual == 0 ? true : false;
