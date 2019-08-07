@@ -59,6 +59,11 @@ public class DartsTest {
     }
 
 
+    @Test
+    public void shouldFinishWithDouble(){
+
+    }
+
 /*    shouldCalculateTheTurn();
 
     shouldStartWithDouble();
