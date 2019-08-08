@@ -21,7 +21,7 @@ public class Darts {
 
 
     public void dart(int num)  {
-        if (!isFirst) {
+        if (!isFirst && (num <= 20 || num >= 1 || num == 25 || num == 50)) {
             scoreActual = scoreActual - num;
             if (this.dartNumber > 1) {
                 this.dartNumber--;
@@ -34,16 +34,17 @@ public class Darts {
 
 
     public void dart (int num, Multiplier m){
-            if(this.dartNumber > 1) {this.dartNumber--; } else {this.dartNumber = 3; this.rounds++;}
+        if(num <= 20 || num >= 1) {
+            if (this.dartNumber > 1) { this.dartNumber--; } else { this.dartNumber = 3; this.rounds++; }
             if (m.getMult() == 2 && isFirst) {
                 scoreActual = scoreActual - (num * m.mult);
                 isFirst = false;
-            } else if(scoreActual - num * m.getMult() == 0 && m.getMult() == 2){
+            } else if (scoreActual - num * m.getMult() == 0 && m.getMult() == 2) {
                 scoreActual = scoreActual - (num * m.mult);
             } else if (!isFirst) {
                 scoreActual = scoreActual - (num * m.mult);
             }
-
+        }
     }
 
     public int getScore(){ return isFirst ? startScore : scoreActual; }
