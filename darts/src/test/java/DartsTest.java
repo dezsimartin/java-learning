@@ -71,9 +71,5 @@ public class DartsTest {
         Assertions.assertTrue(d.isFinished());
     }
 
-/*    shouldCalculateTheTurn();
 
-    shouldStartWithDouble();
-
-    shouldFinishWithDouble();*/
 }
