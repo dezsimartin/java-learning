@@ -1,3 +1,5 @@
+import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
+
 public class Darts {
     public int rounds = 1;
     public int startScore = 301;
@@ -31,6 +33,7 @@ public class Darts {
         }
     }
 
+
     public void dart (int num, Multiplier m){
             if(this.dartNumber > 1) {this.dartNumber--; } else {this.dartNumber = 3; this.rounds++;}
             if (m.getMult() == 2 && isFirst) {
@@ -59,3 +62,6 @@ public class Darts {
     }
 
 }
+
+
+
