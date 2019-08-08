@@ -71,5 +71,4 @@ public class DartsTest {
         Assertions.assertTrue(d.isFinished());
     }
 
-
 }

@@ -1,4 +1,3 @@
-import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 
 public class Darts {
     public int rounds = 1;
@@ -39,8 +38,8 @@ public class Darts {
             if (m.getMult() == 2 && isFirst) {
                 scoreActual = scoreActual - (num * m.mult);
                 isFirst = false;
-            } else if(scoreActual - num == 0 && m.getMult() == 2){
-                scoreActual = scoreActual - num;
+            } else if(scoreActual - num * m.getMult() == 0 && m.getMult() == 2){
+                scoreActual = scoreActual - (num * m.mult);
             } else if (!isFirst) {
                 scoreActual = scoreActual - (num * m.mult);
             }
