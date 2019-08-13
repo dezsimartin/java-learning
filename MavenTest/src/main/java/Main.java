@@ -1,9 +1,11 @@
+import searchtree.BinarySearchTree;
+
 import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        Garage g = new Garage(52, "Rókusi", true, new Car("Feri", 90));
+       /* Garage g = new Garage(52, "Rókusi", true, new Car("Feri", 90));
         System.out.println(g);
 
         try {
@@ -33,6 +35,14 @@ public class Main {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
+
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.insertNode(15);
+        bst.insertNode(10);
+        bst.insertNode(20);
+
+        System.out.println(bst.search(bst.root, 20));
+        bst.inorderTreeWalk(bst.root);
     }
 }
