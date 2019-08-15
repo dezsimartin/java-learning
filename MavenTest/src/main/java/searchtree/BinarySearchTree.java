@@ -43,5 +43,31 @@ public class BinarySearchTree {
         }
     }
 
+    public Node deleteRecord(Node root, int key){
+        if(root == null) return root;                   //Ha nem találtuk meg a keresett elemet.
+        if(key < root.key) {                            //Ha a keresett elem a bal részfában lehet, keressük tovább.
+            root.left = deleteRecord(root.left, key);
+        } else if(key > root.key) {                     //Ha a keresett elem a jobb részfában..
+            root.right = deleteRecord(root.right, key);
+        } else {                                       //Megtaláltuk a törlendő elemet
+        if(root.left == null) {
+            return root.right;                          //Mindenképpen a right csúcsot adjuk vissza. (ha null akkor is)
+        } else if(root.right == null) {
+            return root.left;
+        }
+        root.key = successor(root.right);                       // Successor - kicseréljük a sor rákövetkező elemével, ha van két gyereke
+        root.right = deleteRecord(root.right, root.key);        //Töröljük a rákövetkező elemet a régi helyéről
+        }
+        return  root;
+    }
+
+    private int successor(Node root){
+        int min = root.key;
+        while(root.left != null){
+            min = root.left.key;
+            root = root.left;
+        }
+        return min;
+    }
 
 }

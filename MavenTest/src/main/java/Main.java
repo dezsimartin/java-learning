@@ -38,11 +38,27 @@ public class Main {
         }*/
 
         BinarySearchTree bst = new BinarySearchTree();
+        bst.insertNode(20);
         bst.insertNode(15);
         bst.insertNode(10);
-        bst.insertNode(20);
+        bst.insertNode(25);
 
         System.out.println(bst.search(bst.root, 20));
         bst.inorderTreeWalk(bst.root);
+
+
+        bst.deleteRecord(bst.root, 10);
+        bst.inorderTreeWalk(bst.root);
+
+
+
+        var szo = "Szo";
+        var szam = 10;
+
+        try {
+            var os = new ObjectOutputStream(new FileOutputStream("cica.tyt"));              //var lokális változóknál, mindig inicializálni kell.
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
