@@ -3,12 +3,17 @@ package hu.flowacademy;
 import hu.flowacademy.employee.Employee;
 import hu.flowacademy.employee.Employer;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+
 
         Employee e1 = new Employee("pista", 1);
         Employee e2 = new Employee("jozsi", 26);
@@ -21,7 +26,28 @@ public class Main {
 
         Employer employer = new Employer(employerList);
         System.out.println(employer);
+        /*employerList.remove(0);*/
+        System.out.println(employer);
 
+        FileOutputStream fileOutputStream = new FileOutputStream(new File("myObjects.txt"));
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+        objectOutputStream.writeObject(employer);
+        objectOutputStream.close();
+        fileOutputStream.close();
+
+        FileInputStream fileInputStream = new FileInputStream(new File("myObjects.txt"));
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+        Employer emp = (Employer) objectInputStream.readObject();
+
+        System.out.println(emp);
+
+        Employee e4 = new Employee("kukás", 3);
+        emp.getEmployeeList().add(e4);
+        objectInputStream.close();
+        fileInputStream.close();
+        System.out.println(emp);
         /*Stack stack = new Stack(5);
         stack.push("sz");
         stack.push("zsé");

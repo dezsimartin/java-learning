@@ -1,10 +1,13 @@
 package hu.flowacademy.employee;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
-public class Employer {
+public class Employer implements Serializable {
     private List<Employee> employeeList;
 
     public Employer() {
